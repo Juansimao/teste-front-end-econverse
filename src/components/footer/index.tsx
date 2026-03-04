@@ -1,5 +1,5 @@
 import style from './footer.module.scss'
-import logoEconverse from '../../assets/logos/Logo.svg'
+import logoEconverse from '../../assets/logos/logo.svg'
 import iconFacebook from '../../assets/icons/facebook.svg'
 import iconInstagram from '../../assets/icons/instagram.svg'
 import iconLinkedin from '../../assets/icons/linkedin.svg'
