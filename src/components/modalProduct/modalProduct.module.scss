@@ -1,0 +1,259 @@
+@use '../../styles/mixins.scss' as mix;
+@use '../../styles/designSystem.scss' as ds;
+
+
+// ---------------- variáveis do design (altere aqui) -----------
+
+// cores
+$overlay-bg: rgba(0, 0, 0, 0.6);
+$modal-bg: #ffffff;
+$text-muted: #8a8a8a;
+$link-color: #2f2fe4;
+$border-light: #ddd;
+$buy-bg: #ffd000;
+
+// dimensões
+$modal-width: 769px;
+$modal-height: 299.26px;
+
+// espaçamentos
+$modal-padding: 40px;
+$gap-sm: 12px;
+
+// bordas
+$radius-sm: 4px;
+$radius-md: 6px;
+
+// botão fechar
+$close-size: 32px;
+$close-font: 26px;
+
+// z-index
+$modal-z: 1000;
+
+
+// ------------------------- overlay do modal ---------------
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: $overlay-bg;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: $modal-z;
+}
+
+
+
+// ------------------------- botão de fechar ---------------
+
+.closeButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+
+  width: $close-size;
+  height: $close-size;
+  font-size: $close-font;
+  font-family: 'Inter', sans-serif;
+
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+// ------------------------- container do modal ---------------
+
+.modal {
+  position: relative;
+
+  width: $modal-width;
+  height: $modal-height;
+  background-color: $modal-bg;
+  border-radius: $radius-md;
+
+  display: flex;
+  padding: $modal-padding;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: space-around;
+}
+
+
+// ------------------------- lado esquerdo (imagem) ---------------
+
+.modalLeft {
+  width: 30%;
+
+  display: flex;
+  justify-content: center;
+
+  img {
+    width: 247px;
+    height: 192px;
+    object-fit: contain;
+  }
+}
+
+
+// ------------------------- lado direito (conteúdo) ---------------
+
+.modalRight {
+  width: 328px;
+  height: 200px;
+  padding: 20px 0 5px 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+// ------------------------- textos principais ---------------
+
+.modalTitle {
+  font-size: 20px;
+  letter-spacing: 5%;
+  text-transform: uppercase;
+  color: #3F3F40;
+  font-weight: 400;
+}
+
+.modalPrice {
+  margin: 8px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color:#3F3F40;
+}
+
+.modalDescription {
+  font-family: ds.$font-tertiary;
+  font-size: 10px;
+  letter-spacing: 5%; 
+  color: #9F9F9F;
+  max-height: 50px;
+  overflow-y: auto;
+  text-transform: lowercase;
+
+  &::first-letter{
+    text-transform: uppercase;
+  }
+
+  
+}
+
+.modalLink {
+  font-family: ds.$font-tertiary;
+  font-size: 12px;
+  color: $link-color;
+
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 1.5px; 
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+
+// ------------------------- ações do modal ---------------
+
+.modalActions {
+  display: flex;
+  align-items: center;
+  gap: $gap-sm;
+}
+
+
+// ------------------------- controle de quantidade ---------------
+
+.quantity {
+  display: flex;
+  width: 110px;
+  align-items: center;
+  border: 1px solid $border-light;
+  border-radius: $radius-sm;
+  justify-content: center;
+  font-size: 16px;
+
+  button {
+    border: none;
+    background: transparent;
+    padding: 6px 10px;
+    cursor: pointer;
+  }
+
+  span {
+    padding: 0 12px;
+  }
+}
+
+
+// ------------------------- botão de compra ---------------
+
+.buyButton {
+  background-color: $buy-bg;
+  border: none;
+
+  border-radius: $radius-sm;
+
+  width: 188px;
+  height: 36px;
+
+  font-weight: 700;
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(0.95);
+  }
+}
+
+
+// responsividade tela menor --------------------------------
+
+@media screen and (max-width: 600px) {
+  .modal{
+    flex-direction: column;
+    max-width: 87vw;
+    height: auto;
+
+    align-items: none;
+    justify-content: none;
+   
+  }
+
+.modalLink{
+  font-size: 8px;
+}
+
+.modalLeft {
+  width: 100%;
+
+  @include mix.flex-row-center;
+
+  img {
+    max-width: 90%;
+    max-height: 60%;
+  }
+}
+
+.modalRight {
+  width: 100%;
+}
+  
+  
+}
+
