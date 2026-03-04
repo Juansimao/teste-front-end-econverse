@@ -56,7 +56,7 @@ export function SectionProducts({title, showNav}: SectionProductsProps) {
   useEffect(() => {
     async function loadProducts() {
       try {
-        const response = await api.get('/produtos.json')
+        const response = await api.get("/teste-front-end/junior/tecnologia/lista-produtos")
         setProducts(response.data.products)
       } catch (error) {
         console.error('Erro ao buscar produtos', error)
@@ -69,7 +69,7 @@ export function SectionProducts({title, showNav}: SectionProductsProps) {
   }, [])
 
   if (loading) return <p>Carregando...</p>
-
+  
   return (
     
   <section className={style.relatedProducts}>
