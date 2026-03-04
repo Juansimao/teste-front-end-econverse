@@ -1,0 +1,50 @@
+@use '../../../../styles/designSystem.scss' as ds;
+@use '../../../../styles/mixins.scss' as mix;
+
+
+// ---------------- variáveis do design (altere aqui) -----------
+
+// ajustes visuais que costumam mudar juntos
+
+$section-margin: 70px 0;
+
+$title-size: 30px;
+
+$grid-padding: 30px 6%;
+$grid-gap: 20px;
+$grid-min: 180px;
+
+
+// ------------------------- section marcas ---------------
+
+.sectionMarcas{
+  background-color: ds.$background-white;
+  margin: $section-margin;
+}
+
+
+// ------------------------- título ---------------
+
+.topBrands{
+  text-align: center;
+
+  h3{
+    color: ds.$subtitle-color;
+    font-weight: 700;
+    font-size: $title-size;
+  }
+}
+
+
+// ------------------------- grid de marcas ---------------
+
+.gridBrands{
+  padding: $grid-padding;
+  gap: $grid-gap;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($grid-min, 1fr));
+
+  margin: 0 auto;
+  justify-items: center;
+}

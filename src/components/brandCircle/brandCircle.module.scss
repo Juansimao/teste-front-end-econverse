@@ -1,0 +1,46 @@
+@use '../../styles/mixins.scss' as mix;
+@use '../../styles/designSystem.scss' as ds;
+
+// ---------------- variáveis do design (altere aqui) -----------
+
+// Dimensões
+
+$circle-width: 211px;
+$circle-height: 211px;
+$icon-size: 128px;
+$icon-img-size: 61px;
+
+// Sombras
+
+$shadow-card:
+  0 8px 24px rgba(0, 0, 0, 0.08),
+  0 2px 8px rgba(0, 0, 0, 0.04);
+
+// Dimensões imagem
+
+$img-width: 60%;
+$img-height: 60%;
+
+
+
+//------------------------- Circle Brand component -------------------------
+
+.articleBrand {
+  @include mix.flex-row-center;
+  width: $circle-width;
+  height: $circle-height;
+
+  border-radius: 50%;       
+  overflow: hidden; 
+
+  align-items: center;
+  background-color: ds.$background-white;
+  box-shadow: $shadow-card;
+ 
+
+img {
+  width: $img-width;
+  height: $img-height;
+  object-fit: scale-down;        
+}
+}
