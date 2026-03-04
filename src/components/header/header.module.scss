@@ -1,0 +1,237 @@
+@use '../../styles/mixins.scss' as mix;
+@use '../../styles/designSystem.scss' as ds;
+
+
+// ---------------- variáveis do design (altere aqui) -----------
+
+// coisas que costumam mudar juntas
+
+// cores
+$border-light: #F0F0F0;
+$nav-link-color: #9F9F9F;
+
+// espaçamentos
+$gap-sm: 6px;
+$gap-md: 16px;
+$gap-icons: 20px;
+
+// padding
+$padding-xxs: 2px;
+
+// ícones
+$icon-sm: 20px;
+$icon-md: 32px;
+
+// busca
+$search-input-h: 46px;
+$search-radius: 10px;
+
+// menu
+$menu-shadow: rgba(0, 0, 0, 0.03) 0px 2px 4px 0px inset;
+$menu-padding: 8px 60px;
+
+
+// ------------------------- header ---------------
+
+header{
+  background-color: ds.$background-white;
+  @include mix.flex-columns;
+}
+
+
+// ------------------------- empilhamento geral ---------------
+
+.headerHeight{
+  @include mix.flex-columns;
+  gap: $gap-md;
+}
+
+
+// ------------------------- barra de cima ---------------
+
+.topText{
+  @include mix.flex-row-center;
+  gap: 10%;
+  border-bottom: 1px solid $border-light;
+  padding: $padding-xxs 0;
+  font-size: ds.$font-xs;
+
+  .highlight{
+    color: ds.$button-blue;
+    font-weight: 600;
+    
+  }
+
+  span{
+    color: ds.$text-secondary;
+    font-weight: 400;
+  }
+}
+
+.textFirst{
+  color: ds.$button-blue !important;
+  font-weight: 600 !important;
+  
+}
+
+.highlightFirst{
+   color: ds.$text-secondary;
+   font-weight: 400;
+
+}
+
+
+// ------------------------- item da barra ---------------
+
+.topItem{
+  display: flex;
+  align-items: center;
+  gap: $gap-sm;
+
+  img{
+    width: $icon-sm;
+  }
+}
+
+
+// ------------------------- botões de ação ---------------
+
+.iconButton {
+  @include mix.flex-row-center;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  img{
+    width: $icon-md;
+  }
+
+  .iconPacket{
+    width: 24px;
+  }
+}
+
+
+// ------------------------- parte principal ---------------
+
+.headerMain{
+  @include mix.flex-row-center;
+  justify-content: space-around;
+
+  .logoEconverse{
+    width: 139px;
+    height: 41px;
+  }
+
+  .searchForm{
+    width: 43%;
+    padding-left: 20px;
+
+    div{
+      @include mix.flex-row-between;
+
+      img{
+        position: relative;
+        left: -45px;
+        width: 22px;
+      }
+
+      input{
+        width: 100%;
+        height: $search-input-h;
+        border-radius: $search-radius;
+        border: 0;
+        background-color: ds.$background-gray;
+        padding: 16px;
+        
+      }
+    }
+  }
+}
+
+
+// ------------------------- ícones do header ---------------
+
+.iconsHeader{
+  @include mix.flex-row-center;
+  gap: $gap-icons;
+}
+
+
+// ------------------------- menu ---------------
+
+.headerMenu{
+  display: flex;
+  justify-content: center;
+
+  ul{
+    @include mix.flex-row-center;
+    gap: 0 70px;
+    background: ds.$background-white;
+    box-shadow: $menu-shadow;
+    position: relative;
+    z-index: 2;
+    padding: $menu-padding;
+  }
+
+  a{
+    color: $nav-link-color;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: ds.$font-xs;
+
+    &:hover{
+      color: ds.$subtitle-color;
+    }
+  }
+
+  .itemNav{
+    color: ds.$subtitle-color;
+  }
+}
+
+
+// ------------------------- detalhe especial ---------------
+
+.iconCrown{
+  width: 27px;
+  position: relative;
+  top: 2px;
+  padding: 0 10px 0 0;
+}
+
+
+// ----------------------- responsividade em telas menores --------------
+
+@media (max-width: 700px) {
+
+
+  .topText, .headerMenu{
+  display: none;
+  }
+
+  .headerMain{
+    padding: 20px 0 20px 0;
+    flex-wrap: nowrap;
+    @include mix.flex-columns;
+    align-items: center;
+    gap: 13px;
+  }
+
+  .imgLogoHeader { order: 1; 
+  }
+
+  .searchForm { order: 3;
+    width: 100% !important;
+    padding: 0px 0 0px 20px;
+    align-self: center;
+    background-color: ds.$background-white;
+  }
+
+  .iconsHeader { order: 2; 
+  }
+  
+
+}
+
