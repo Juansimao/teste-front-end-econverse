@@ -1,0 +1,142 @@
+@use '../../styles/mixins.scss' as mix;
+@use '../../styles/designSystem.scss' as ds;
+
+// ---------------- variáveis do design (altere aqui) -----------
+
+
+// Dimensões
+$grid-template-colunas: 2fr 1fr 1fr 1fr;
+
+
+// --------------------- footer do site----------------------------------
+
+footer{
+  background-color: ds.$background-gray;
+
+
+}
+
+.footer {
+
+  //------------------ GRID do footer inteiro -----------------
+  display: grid;
+  grid-template-columns: $grid-template-colunas;
+  column-gap: 4rem;
+  align-items: start;
+  padding: 3rem 1rem;
+
+  background-color: ds.$background-gray;
+  width: 90%;
+  margin: 0 auto;
+}
+
+// ------------------ primeira coluna footer ------------------------
+
+.sectionInfoEconvese {
+  max-width: 425px;
+  position: relative;
+  padding-right: 2rem;
+
+  p {
+    font-size: ds.$font-sm;
+    font-weight: 300;
+    margin-top: 1rem;
+    max-width: 80%;
+    
+  }
+}
+
+.sectionInfoEconvese::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background-color: #d9d9d9;
+}
+
+.redesSociais {
+  margin-top: 1.25rem;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  column-gap: 0.75rem;
+
+  a {
+    text-decoration: none;
+    color: ds.$text-secondary;
+    font-size: ds.$font-sm;
+  }
+}
+
+// ------------------ lista em grid nav menu ------------------------
+
+.navFooter {
+  color: ds.$text-secondary;
+
+  h4 {
+    font-size: ds.$font-md;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 0.75rem;
+
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  a {
+    font-family: ds.$font-tertiary;
+    font-size: ds.$font-sm;
+    font-weight: 400;
+    color: ds.$text-secondary;
+    text-decoration: none;
+  }
+}
+
+// ------------------ espaço para texto abaixo do footer------------------------
+
+.bottomText{
+  text-align: center;
+  font-size: ds.$font-xs;
+  color: ds.$text-secondary;
+  background-color: ds.$background-white;
+  padding: 15px 0px;
+}
+
+
+.bottomFooter{
+  background-color: ds.$background-white;
+  width: 100vw;
+}
+
+// ------------------- footer responsivo para telas menores -------------------------
+
+@media (max-width: 700px) {
+  .footer {
+    grid-template-columns: 1fr;
+    row-gap: 2rem;
+  }
+
+  .sectionInfoEconvese {
+    padding-right: 0;
+  }
+
+  .sectionInfoEconvese::after {
+    display: none;
+  }
+
+  .redesSociais {
+    grid-auto-flow: row;
+    row-gap: 0.75rem;
+    column-gap: 0;
+  }
+  
+}
+
