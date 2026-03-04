@@ -1,31 +1,149 @@
-# Teste Econverse: Vaga Desenvolvedor Front-End
+# Econverse Front-End Case
 
-### Vem ser #Econverse!
+Este projeto foi desenvolvido como parte de um **desafio técnico para a vaga de estágio Front-End na Econverse**.
 
-Segue abaixo as instruções para a execução do teste.
+A aplicação consiste em uma **interface de e-commerce**, com listagem de produtos e visualização dos itens em um modal com suas principais informações, seguindo o layout proposto no case.
 
-## Instruções
-- Faça um fork desse projeto para a sua conta pessoal do GitHub.
-- Desenvolva a página conforme as **Especificações Técnicas** 
-- Crie um README com as instruções para compilar, testar e rodar o projeto.
-- O link do repositório deverá ser enviado para o e-mail julia.gardiano@econverse.com.br com o título **Teste Vaga FrontEnd**
+O objetivo do projeto é demonstrar boas práticas de desenvolvimento front-end, como componentização e organização de código.
 
-## Especificações Técnicas
-- Desenvolver a pagina em React e TypeScript conforme o [layout](https://www.figma.com/file/rWnzPeoxgynuNPsJjV0VmV/Teste-Front-End-Jr?node-id=0%3A1). Para conseguir pegar os elementos do Figma, basta copiar o layout para sua conta que terá acesso de edição.
-- Montar a [vitrine](https://app.econverse.com.br/teste-front-end/junior/tecnologia/layout/vitrine-produtos.png) de produtos consumindo as informações dos produtos em json atraves desse [Link](https://app.econverse.com.br/teste-front-end/junior/tecnologia/lista-produtos/produtos.json).
-- Desenvolver a interação ao clicar em um produto conforme layout. A interação consiste em abrir um modal com as principais informações do produto presente no arquivo [JSON](https://app.econverse.com.br/teste-front-end/junior/tecnologia/lista-produtos/produtos.json) conforme o produto que clicar.
-- Utilizar Pré-processador Sass, Less ou Stylus.
-- Respeitar o Layout pixel a pixel, tamanho das fontes, cores e botões.
-- Não Utilizar bibliotecas UI como Bootstrap, Foundation, ou afins.
+---
 
-## Pontos Extras
-- Utilizar Boas práticas de SEO
-- Uso de HTML semântico
 
-## O que avaliaremos em seu teste
-- Organização do projeto
-- Lógica do código
-- Componentização
-- Alcance dos objetivos propostos
+## Deploy do projeto 
 
-**Boa sorte! ;)**
+A aplicação está disponivel no link abaixo:
+
+https://teste-front-end-econverse-five.vercel.app/
+
+
+---
+
+## Tecnologias Utilizadas
+
+* React
+* TypeScript
+* Vite
+* SCSS Modules
+* Axios
+
+---
+
+## Funcionalidades
+
+* Listagem de produtos
+* Modal de visualização de produto
+* Consumo de API (com fallback para mock local)
+* Componentização da interface
+* Organização modular de estilos
+* Layout responsivo
+
+---
+
+## Estrutura geral do Projeto
+
+```
+src
+ ├── assets
+ ├── components
+ │   ├── cardProduct
+ │   ├── modalProduct
+ │   ├── header
+ │   └── footer
+ │
+ ├── pages
+ │   └── home
+ │       └── sectionsLocal
+ │           ├── banner
+ │           ├── categories
+ │           ├── brands
+ │           ├── partners
+ │           └── newsletter
+ │
+ ├── services
+ │   └── apiProducts.ts
+ │
+ ├── styles
+ │   ├── designSystem.scss
+ │   ├── global.scss
+ │   └── mixins.scss
+ │
+ ├── types
+ │   └── product.ts
+ │
+ └── data
+```
+
+A estrutura foi organizada separando:
+
+* **components** → elementos reutilizáveis da interface
+* **sections** → seções específicas da página
+* **services** → comunicação com API
+* **styles** → design system e mixins globais
+* **data** → dados mockados
+* **types** → tipagens TypeScript utilizadas para a estrutura de dados da aplicação
+
+---
+
+## Como rodar o projeto
+
+Clone o repositório
+
+```
+git clone https://github.com/Juansimao/teste-front-end-econverse.git
+```
+
+Entre na pasta do projeto
+
+```
+cd teste-front-end-econverse
+```
+
+Instale as dependências
+
+```
+npm install
+```
+
+Execute o projeto
+
+```
+npm run dev
+```
+
+A aplicação estará disponível em:
+
+```
+http://localhost:5173
+```
+
+## Build do projeto
+
+Para gerar a versão de produção da aplicação execute:
+
+```
+npm run build
+```
+
+Após o build, os arquivos otimizados serão gerados na pasta:
+
+dist
+
+Para visualizar o build localmente:
+
+```
+npm run preview
+```
+
+---
+
+## Autor
+
+Juan Simão
+
+GitHub
+https://github.com/Juansimao
+
+LinkedIn
+www.linkedin.com/in/juansimão
+
+
