@@ -1,0 +1,83 @@
+@use '../../styles/mixins.scss' as mix;
+@use '../../styles/designSystem.scss' as ds;
+
+// ---------------- variáveis do design (altere aqui) -----------
+
+
+// Dimensões
+
+$card-width: 128px;
+$card-height: 171px;
+$icon-size: 128px;
+$icon-img-size: 61px;
+
+// Espaçamentos
+
+$spacing-md: 12px;
+
+// Visual
+
+$radius-md: 12px;
+$transition-fast: 0.2s ease;
+$shadow-card:
+0 0 16px rgba(0, 0, 0, 0.08),
+0 8px 8px rgba(0, 0, 0, 0.04);
+
+// --------------Card de categoria/marca clicável -------------
+
+.card {
+  width: $card-width;
+  height: $card-height;
+
+  cursor: pointer;
+  @include mix.flex-columns;
+  align-items: center;
+  gap: 12px;
+
+
+  .icon {
+    width: $icon-size;
+    height: $icon-size;
+
+    box-shadow: $shadow-card;
+    background-color: ds.$background-gray;
+
+    transition:$transition-fast;
+    border-radius: $radius-md;
+
+    @include mix.flex-columns;
+    align-items: center;
+    justify-content: center;
+
+
+    img {
+      width: $icon-img-size;
+      height: $icon-img-size;
+    }
+  }
+
+  .label {
+    font-size: ds.$font-sm;
+    font-weight: 500;
+    color: ds.$text-primary;
+  }
+
+  // --------------- Estado ativo: destaca o card selecionado ----------------
+
+  &.active {
+    .iconWrapper {
+      background-color: ds.$background-white;
+      border: 2px solid ds.$button-blue;
+    }
+
+    .icon{
+      background-color: ds.$background-white;
+      border: 3px solid ds.$background-gray;
+    }
+
+    .label {
+      color: ds.$button-blue;
+      font-weight: 600;
+    }
+  }
+}

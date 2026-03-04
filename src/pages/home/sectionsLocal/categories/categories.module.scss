@@ -1,0 +1,82 @@
+@use '../../../../styles/designSystem.scss' as ds;
+@use '../../../../styles/mixins.scss' as mix;
+
+
+// ---------------- variáveis do design (altere aqui) -----------
+
+// medidas que costumam ajustar no layout
+
+$inner-max: 1420px;
+$inner-margin-top: 40px;
+$inner-padding-x: 5%;
+
+$card-size: 128px;
+$grid-gap: 50px;
+
+$break-carousel: 1330px;
+
+$carousel-card: 120px;
+$carousel-gap: 14px;
+$carousel-padding: 8px 5%;
+
+
+// ------------------------- section categorias ---------------
+
+.SectionCategories {
+  background-color: ds.$background-white;
+}
+
+
+// ------------------------- container interno ---------------
+
+.inner {
+  width: 100%;
+  max-width: $inner-max;
+  margin: 0 auto;
+  margin-top: $inner-margin-top;
+  padding: 0 $inner-padding-x;
+}
+
+
+// ------------------------- grid desktop ---------------
+
+.gridCategory {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, $card-size);
+  gap: $grid-gap;
+  justify-content: center;
+}
+
+
+// ------------------------- carrossel no mobile ---------------
+
+@media (max-width: $break-carousel) {
+  .gridCategory {
+    grid-auto-flow: column;
+    grid-auto-columns: $carousel-card;
+    gap: $carousel-gap;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+
+    padding: $carousel-padding;
+    justify-content: start;
+
+    scrollbar-width: none;
+  }
+
+  // encaixe de cada item no snap
+  .gridCategory > * {
+    scroll-snap-align: start;
+  }
+}
+
+@media screen and (min-width: 2230px){
+  .inner{
+    min-width: 1520px;
+  }
+  
+}
