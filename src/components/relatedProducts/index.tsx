@@ -54,24 +54,30 @@ export function SectionProducts({title, showNav}: SectionProductsProps) {
 
   // ------------------------ chamada de api -----------------------
 
-  useEffect(() => {
-    async function loadProducts() {
+useEffect(() => {
+  async function loadProducts() {
+    try {
+      const response = await api.get(
+        "/teste-front-end/junior/tecnologia/lista-produtos/produtos.json"
+      )
+      setProducts(response.data.products)
+    } catch (error) {
+      console.warn("API falhou (CORS/403). Tentando mock local...", error)
+
       try {
-        const response = await api.get("/teste-front-end/junior/tecnologia/lista-produtos/produtos.json")
-        setProducts(response.data.products)
-
-      } catch (error) {
-          console.error('Erro ao buscar produtos', error)
-          const response = await axios.get("/produtos.json")
-          setProducts(response.data.products)
-
-      } finally {
-        setLoading(false)
+        const mock = await axios.get("/produtos.json")
+        setProducts(mock.data.products)
+      } catch (mockError) {
+        console.error("Mock também falhou:", mockError)
+        setProducts([]) // garante que a tela renderiza
       }
+    } finally {
+      setLoading(false)
     }
+  }
 
-    loadProducts()
-  }, [])
+  loadProducts()
+}, [])
 
   if (loading) return <p>Carregando...</p>
 
