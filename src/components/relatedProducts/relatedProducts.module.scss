@@ -1,0 +1,201 @@
+@use '../../styles/mixins.scss' as mix;
+@use '../../styles/designSystem.scss' as ds;
+
+
+// ----------------- variáveis section relatedProducts (altere aqui) -------------------
+
+// espaçamentos gerais
+$section-padding-x: 6%;
+$section-margin: 70px 0 60px;
+
+// títulos
+$title-gap: 16px;
+$title-line-height: 1px;
+$title-border-color: #dedede;
+
+// categorias nav
+$category-btn-h: 40px;
+$category-btn-w: 210px;
+$category-border: #bdbdbd;
+
+// carrossel
+$carousel-max: 1210px;
+$carousel-padding-y: 20px;
+$carousel-gap: 15px;
+
+// setas
+$arrow-size: 32px;
+$arrow-offset: -72px;
+$arrow-border: #dedede;
+$arrow-bg: #ffffff;
+$arrow-color: #8a8a8a;
+$arrow-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+
+// mobile
+$break-carousel: 1330px;
+$carousel-card: 120px;
+$carousel-gap-mobile: 14px;
+$carousel-padding-mobile: 8px 5%;
+
+
+// ------------------------ section Produtos -------------------
+
+.relatedProducts {
+  padding: 0 $section-padding-x;
+  margin: $section-margin;
+}
+
+
+// ------------------------ header nav menu -----------------------
+
+.titleSection {
+  @include mix.flex-row-center;
+  text-align: center;
+  align-items: center;
+  gap: $title-gap;
+  padding: 3px 0;
+
+  font-size: ds.$font-xl;
+  color: ds.$subtitle-color;
+  font-weight: 700;
+
+  &::before,
+  &::after {
+    content: '';
+    flex: 1;
+    height: $title-line-height;
+    background-color: $title-border-color;
+    margin-bottom: 10px;
+  }
+}
+
+.subtitle {
+  @include mix.flex-row-center;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+
+// ------------------------ nav menu categoria produtos -------------------
+
+.categoriesNav {
+  text-align: center;
+
+  button {
+    border: 1px solid $category-border;
+    height: $category-btn-h;
+    width: $category-btn-w;
+    background-color: ds.$background-white;
+
+    font-weight: 400;
+    font-size: ds.$font-md;
+    color: ds.$font-primary;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+}
+
+.active {
+  border: 1px solid ds.$subtitle-color;
+  color: ds.$subtitle-color;
+}
+
+
+// ---------------------------- carrossel cards ------------
+
+.carouselWrapper {
+  position: relative;
+  max-width: $carousel-max;
+  margin: 0 auto;
+  padding: $carousel-padding-y 0;
+}
+
+
+// -------------------------- grid cards produtos ------------
+
+.productsGrid {
+  margin: 0 auto;
+  max-width: $carousel-max;
+  padding: $carousel-padding-y 0;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $carousel-gap;
+
+  justify-items: center;
+  justify-content: center;
+}
+
+
+// ------------------------------- setas anterior/próximo ---------------------
+
+.arrowLeft,
+.arrowRight {
+  position: absolute;
+  z-index: 2;
+
+  top: calc(50% + 30px);
+  transform: translateY(-50%);
+
+  width: $arrow-size;
+  height: $arrow-size;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid $arrow-border;
+  background-color: $arrow-bg;
+  box-shadow: $arrow-shadow;
+
+  font-size: 22px;
+  line-height: 1;
+  color: $arrow-color;
+
+  cursor: pointer;
+  transition: background 0.2s ease, opacity 0.2s ease;
+
+  &:hover:not(:disabled) {
+    background-color: #f5f5f5;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+.arrowLeft {
+  left: $arrow-offset;
+}
+
+.arrowRight {
+  right: $arrow-offset;
+}
+
+
+// ---------------------------- responsividade tela menor ------------------
+
+@media (max-width: $break-carousel) {
+  .productsGrid {
+    grid-auto-flow: column;
+    grid-auto-columns: $carousel-card;
+    gap: $carousel-gap-mobile;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+
+    padding: $carousel-padding-mobile;
+    justify-content: start;
+
+    scrollbar-width: none;
+  }
+
+  .productsGrid > * {
+    scroll-snap-align: start;
+  }
+}
