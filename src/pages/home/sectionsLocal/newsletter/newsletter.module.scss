@@ -1,0 +1,184 @@
+@use '../../../../styles/designSystem.scss' as ds;
+@use '../../../../styles/mixins.scss' as mix;
+
+
+// ---------------- variáveis do design (altere aqui) -----------
+
+$newsletter-bg: linear-gradient(90deg, #2b1f4a 0%, #1e153a 100%);
+
+$section-padding: 28px 0;
+$text-margin-left: 6%;
+
+$title-size: 18px;
+$title-gap: 6px;
+
+$text-opacity: 0.9;
+$text-width: 85%;
+
+$form-gap: 6px;
+
+$field-h: 36px;
+$field-w: 220px;
+$field-padding-x: 12px;
+$field-radius: 10px;
+
+$btn-w: 135px;
+$btn-padding-x: 18px;
+$btn-radius: 6px;
+
+$terms-gap: 8px;
+$terms-size: 11px;
+$check-size: 14px;
+
+$bp-sm: 600px;
+$bp-md-min: 601px;
+$bp-md-max: 800px;
+
+
+// ------------------------- seção ---------------
+
+.newsletter {
+  background: $newsletter-bg;
+  padding: $section-padding;
+}
+
+
+// ------------------------- layout principal ---------------
+
+.newsletterContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+// ------------------------- texto ---------------
+
+.newsletterText {
+  color: #fff;
+  margin-left: $text-margin-left;
+
+  h3 {
+    font-size: $title-size;
+    font-weight: 600;
+    margin: 0 0 $title-gap;
+    text-align: left;
+    font-size: 22px;
+  }
+
+  p {
+    font-size: ds.$font-xs;
+    margin: 0;
+    opacity: $text-opacity;
+    width: $text-width;
+    text-align: left;
+  }
+}
+
+
+// ------------------------- formulário ---------------
+
+.newsletterForm {
+  display: flex;
+  align-items: center;
+  gap: $form-gap;
+  flex-wrap: wrap;
+
+  input[type="text"],
+  input[type="email"] {
+    height: $field-h;
+    width: $field-w;
+    padding: 0 $field-padding-x;
+    border: 0;
+    border-radius: $field-radius;
+    background-color: ds.$background-white;
+    color: ds.$font-primary;
+    outline: none;
+  }
+
+  button {
+    height: $field-h;
+    width: $btn-w;
+    padding: 0 $btn-padding-x;
+    border: 0;
+    border-radius: $btn-radius;
+    background: ds.$button-yellow;
+    font-weight: 600;
+    cursor: pointer;
+  }
+}
+
+
+// ------------------------- termos ---------------
+
+.newsletterTerms {
+  display: flex;
+  align-items: center;
+  gap: $terms-gap;
+
+  color: ds.$text-inverse;
+  font-size: $terms-size;
+  opacity: $text-opacity;
+  width: 100%;
+
+  input {
+    width: $check-size;
+    height: $check-size;
+  }
+}
+
+
+// ------------------------- responsivo (mobile) ---------------
+
+@media (max-width: $bp-sm) {
+  .newsletterContent {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .newsletterForm {
+    width: 100%;
+    justify-content: center;
+
+    input[type="text"],
+    input[type="email"] {
+      width: 100%;
+      max-width: 500px;
+    }
+  }
+
+  .newsletterText {
+    width: 100%;
+    margin: 0;
+    padding: 30px 0;
+
+    h3 {
+      text-align: center;
+    }
+
+    p {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
+
+
+// ------------------------- responsivo para telas menores ---------------
+
+@media (min-width: $bp-md-min) and (max-width: $bp-md-max) {
+  .newsletterContent {
+    justify-content: center;
+    display: flex;
+    max-width: 650px;
+  }
+
+  .newsletterForm {
+    flex-direction: column;
+
+    button {
+      width: 100%;
+    }
+  }
+}
