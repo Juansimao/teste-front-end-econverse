@@ -1,0 +1,106 @@
+@use '../../styles/mixins.scss' as mix;
+@use '../../styles/designSystem.scss' as ds;
+
+// ---------------- variáveis do design (altere aqui) -----------
+
+
+// Dimensões
+
+$card-width: 303px;
+$card-height: 500px;
+
+$img-product-width: 100%;
+$img-product-height: 250px;
+
+// arredondamento
+
+$border-card-product: 10px;
+
+// Visual
+
+$radius-md: 12px;
+$transition-fast: 0.2s ease;
+$shadow-card:
+0px 0px 24px rgba(0, 0, 0, 0.07),
+0px 8px 24px rgba(0, 0, 0, 0.07);
+
+
+
+// ------------------- card produto e imagem vitrine----------------
+
+.articleProduct{
+  width: $card-width;
+  height: $card-height;
+  border-radius: $border-card-product;
+  padding: 17px 13px;
+
+  box-shadow: $shadow-card;
+
+  @include mix.flex-columns;
+  justify-content: space-around;
+
+  img{
+    width: $img-product-width;
+    height: $img-product-height;
+
+  }
+}
+
+// ------------------- informações do produto------------------------
+
+.prices{
+  @include mix.flex-columns;
+
+  .oldPrice{
+    font-weight: 400;
+    font-size: ds.$font-md;
+    text-decoration: line-through;
+    color: ds.$font-secondary
+  }
+
+  .currentPrice{
+    font-weight: 700;
+    color: ds.$font-primary;
+    font-size: ds.$font-lg;
+
+    
+  }
+}
+
+.payDescription{
+  font-weight: 400;
+  font-size: ds.$font-xs;
+  color: ds.$font-primary;
+}
+
+
+.freeShipping{
+  color:#3442B5;
+  font-weight: 400;
+  font-size: ds.$font-xs;
+  color: ds.$font-primary;
+
+}
+
+.description{
+  font-size: 15px;
+  font-weight: 300;
+  color: ds.$font-primary;
+}
+
+.buyButton{
+  height: 44px;
+  border-radius: 4px;
+  background-color: ds.$button-blue;
+  color: ds.$text-inverse;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: ds.$font-sm;
+
+  cursor: pointer;
+  border: 0px;
+
+  &:hover{
+    opacity: 0.9;
+  }
+}
