@@ -1,0 +1,23 @@
+@use '../../../../styles/designSystem.scss' as ds;
+@use '../../../../styles/mixins.scss' as mix;
+
+.sectionPartners{
+  padding: 0 6%;
+  height: 350px;
+  display: grid;
+  gap: 12px;
+
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  align-items: center;
+  justify-items: center;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+@media screen and (max-width: 700px) {
+  .sectionPartners{
+    margin-bottom: 450px;
+    
+  }
+  
+}

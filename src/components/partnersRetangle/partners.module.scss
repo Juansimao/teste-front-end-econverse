@@ -1,0 +1,106 @@
+@use '../../styles/mixins.scss' as mix;
+@use '../../styles/designSystem.scss' as ds;
+
+// ---------------- variáveis do design (altere aqui) -----------
+
+$partners-img: url('../../assets/images/parceiros.jpg');
+
+// overlay por cima da imagem (pra garantir leitura do texto)
+$partners-overlay: linear-gradient(
+  90deg,
+  rgba(0, 0, 0, 0.3) 0%,
+  rgba(0, 0, 0, 0.55) 30%,
+  rgba(0, 0, 0, 0.30) 55%,
+  rgba(0, 0, 0, 0.12) 75%,
+  rgba(0, 0, 0, 0.05) 100%
+);
+
+// dimensões do card
+$partners-max: 635px;
+$partners-h: 350px;
+$partners-radius: 14px;
+
+// imagem (enquadramento)
+$partners-bg-size: 155%;
+$partners-bg-pos: -140px;
+
+// conteúdo interno
+$content-gap: 20px;
+$content-w: 54%;
+$content-padding: 0 0 6% 6%;
+
+// título
+$title-size: 40px;
+$title-size-lg: 36px;
+
+// botão
+$btn-w: 144px;
+$btn-h: 48px;
+$btn-radius: 6px;
+
+
+// ------------------------- card partners ---------------
+
+.articlePartners{
+  background-image: $partners-overlay, $partners-img;
+
+  max-width: $partners-max;
+  width: 100%;
+  height: $partners-h;
+
+  background-size: $partners-bg-size;
+  background-position: $partners-bg-pos;
+  border-radius: $partners-radius;
+
+  // ------------------------- conteúdo ---------------
+
+  div{
+    @include mix.flex-columns;
+    justify-content: end;
+    gap: $content-gap;
+
+    height: 100%;
+    width: $content-w;
+    padding: $content-padding;
+    color: ds.$text-inverse;
+
+    h3{
+      font-size: $title-size;
+    }
+
+    button{
+      width: $btn-w;
+      height: $btn-h;
+      background-color: ds.$button-yellow;
+      border: none;
+      border-radius: $btn-radius;
+
+      font-weight: 700;
+      font-size: ds.$font-md;
+      letter-spacing: 8%;
+      cursor: pointer;
+    }
+  }
+}
+
+
+// ------------------------- responsivo para telas menores ---------------
+
+@media screen and (max-width: 1280px){
+  .articlePartners{
+    div{
+      width: 80%;
+      padding-bottom: 70px;
+
+      h3{
+        font-size: $title-size-lg;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px){
+  .articlePartners{
+    background-size: $partners-bg-size;
+  }
+}
