@@ -1,0 +1,130 @@
+@use '../../../../styles/designSystem.scss' as ds;
+@use '../../../../styles/mixins.scss' as mix;
+
+// ---------------- variáveis do design (altere aqui) -----------
+
+$banner-img: url('../../../../assets/images/top-banner.jpg');
+
+$banner-overlay: linear-gradient(
+  90deg,
+  rgba(0, 0, 0, 0.75) 20%,
+  rgba(0, 0, 0, 0.45) 40%,
+  rgba(0, 0, 0, 0) 70%
+);
+
+$banner-bg-pos: 30% 30%;
+$banner-bg-size: 160%;
+$banner-h: 390px;
+
+// bloco de texto
+$text-padding: 80px 0 0 80px;
+$text-max: 800px;
+$text-gap: 15px;
+
+// título
+$title-size: 48px;
+$title-line: 50px;
+
+// subtítulos
+$subtitle-size: 32px;
+
+// botão
+$btn-w: 200px;
+$btn-h: 50px;
+$btn-radius: 7px;
+$btn-margin: 20px 5px;
+
+// hover
+$btn-hover-scale: 1.02;
+
+
+// ------------------------- banner ---------------
+
+.sectionBanner{
+  background-image: $banner-overlay, $banner-img;
+  background-position: $banner-bg-pos;
+  background-size: $banner-bg-size;
+
+  width: 100%;
+  height: $banner-h;
+  position: relative;
+
+  // ------------------------- textos ---------------
+
+  .containerTextos{
+    @include mix.flex-columns;
+    padding: $text-padding;
+
+    height: 100%;
+    max-width: $text-max;
+    justify-content: center;
+    gap: $text-gap;
+
+    h1{
+      color: ds.$text-inverse;
+      font-weight: 600;
+      font-size: $title-size;
+      line-height: $title-line;
+      overflow: hidden;
+    }
+  }
+}
+
+
+// ------------------------- subtítulos ---------------
+
+.spanSubtitulo50off{
+  color: ds.$button-yellow;
+  font-size: $subtitle-size;
+  font-weight: 700;
+}
+
+.spanSubtitulo{
+  color: ds.$text-inverse;
+  font-size: $subtitle-size;
+  font-weight: 300;
+}
+
+
+// ------------------------- botão “ver produtos” ---------------
+
+.btnVerProdutos{
+  margin: $btn-margin;
+  background-color: ds.$button-yellow;
+  font-size: ds.$font-md;
+
+  width: $btn-w;
+  height: $btn-h;
+  border-radius: $btn-radius;
+  border: 0;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover{
+    transform: scale($btn-hover-scale);
+  }
+}
+
+// ------------------------- responsividade telas menores ---------------
+
+@media (max-width: 761px) {
+  .containerTextos{
+   padding: 50px 0 0 0px !important; 
+   text-align: center;
+
+    h1{
+      font-size: 40px !important;
+    }
+  }
+}
+
+@media (max-width: 420px) {
+
+   .containerTextos{
+
+    h1{
+      font-size: 30px !important;
+      font-weight: 600px !important;
+    }
+  }
+}
