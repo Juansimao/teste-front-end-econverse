@@ -24,7 +24,13 @@ export function CardProduct({ product, onBuy }: CardProductProps){
 
       <div className={style.prices}>
           <span className={style.oldPrice}>R$ 30,90</span>
-          <strong className={style.currentPrice}>R$ {product.price}</strong>
+          <strong className={style.currentPrice}>{product.price.toLocaleString('pt-BR', {
+
+                  style: 'currency',
+                  currency: 'BRL',
+                })}
+
+          </strong>
       </div>
 
       <p className={style.payDescription}>
