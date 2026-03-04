@@ -35,7 +35,7 @@ export function SectionsNewsletter() {
 
             {/* Termos */}
             <label className={style.newsletterTerms}>
-              <input type="checkbox" name="terms" />
+              <input type="checkbox" name="terms" defaultChecked/>
               Aceito os termos e condições
             </label>
           </form>
