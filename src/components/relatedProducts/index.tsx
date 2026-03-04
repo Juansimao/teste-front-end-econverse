@@ -57,7 +57,7 @@ export function SectionProducts({title, showNav}: SectionProductsProps) {
   useEffect(() => {
     async function loadProducts() {
       try {
-        const response = await api.get("/teste-front-end/junior/tecnologia/lista-produtos")
+        const response = await api.get("/teste-front-end/junior/tecnologia/lista-produtos/produtos.json")
         setProducts(response.data.products)
 
       } catch (error) {
