@@ -1,4 +1,4 @@
-import logoEconverse from '../../assets/logos/Logo.svg'
+import logoEconverse from '../../assets/logos/logo.svg'
 import style from './header.module.scss'
 
 //import icons conforme layout 
