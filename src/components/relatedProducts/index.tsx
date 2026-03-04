@@ -1,5 +1,6 @@
 import style from './relatedProducts.module.scss'
 import { CardProduct } from '../cardProduct'
+import axios from "axios";
 import { api } from '../../services/apiProducts'
 import { useEffect, useState } from 'react'
 import type { SectionProductsProps } from '../../types/relatedProducts'
@@ -58,8 +59,12 @@ export function SectionProducts({title, showNav}: SectionProductsProps) {
       try {
         const response = await api.get("/teste-front-end/junior/tecnologia/lista-produtos")
         setProducts(response.data.products)
+
       } catch (error) {
-        console.error('Erro ao buscar produtos', error)
+          console.error('Erro ao buscar produtos', error)
+          const response = await axios.get("/produtos.json")
+          setProducts(response.data.products)
+
       } finally {
         setLoading(false)
       }
@@ -69,7 +74,7 @@ export function SectionProducts({title, showNav}: SectionProductsProps) {
   }, [])
 
   if (loading) return <p>Carregando...</p>
-  
+
   return (
     
   <section className={style.relatedProducts}>
